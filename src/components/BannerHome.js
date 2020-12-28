@@ -6,11 +6,13 @@ const BannerHome = () => {
       <div className="placeholder">
         <span>Logo</span>
       </div>
-      <ul>
-        <li><a>About Us</a></li>
-        <li><a>Sign Up/Log In</a></li>
-        <li><a>Contact</a></li>
-      </ul>
+      <nav className='navlinks'>
+        <ul>
+          <li><a>About Us</a></li>
+          <li><a>Sign Up/Log In</a></li>
+          <li><a>Contact</a></li>
+        </ul>
+      </nav>
     </div>
   )
 }

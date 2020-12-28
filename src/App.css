@@ -3,6 +3,14 @@
   position: fixed;
   width: 100vw;
   display: flex;
+  justify-content: space-between;
+}
+.navlinks ul {
+  width: 500px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 .placeholder {
   background: #ccc;
