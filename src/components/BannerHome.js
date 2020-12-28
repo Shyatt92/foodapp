@@ -2,8 +2,15 @@ import React from 'react'
 
 const BannerHome = () => {
   return(
-    <div>
-      <h1>Home Banner</h1>
+    <div className='bannerHome'>
+      <div className="placeholder">
+        <span>Logo</span>
+      </div>
+      <ul>
+        <li><a>About Us</a></li>
+        <li><a>Sign Up/Log In</a></li>
+        <li><a>Contact</a></li>
+      </ul>
     </div>
   )
 }
