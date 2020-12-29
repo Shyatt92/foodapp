@@ -1,4 +1,5 @@
 import React from 'react'
+import './BannerHome.css'
 
 const BannerHome = () => {
   return(
@@ -8,9 +9,9 @@ const BannerHome = () => {
       </div>
       <nav className='navlinks'>
         <ul>
-          <li><a>About Us</a></li>
-          <li><a>Sign Up/Log In</a></li>
-          <li><a>Contact</a></li>
+          <li><a className='navlink' href=''>About Us</a></li>
+          <li><a className='navlink' href=''>Sign Up/Log In</a></li>
+          <li><a className='navlink' href=''>Contact</a></li>
         </ul>
       </nav>
     </div>
