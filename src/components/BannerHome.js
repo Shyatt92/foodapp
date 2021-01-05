@@ -1,7 +1,7 @@
 import React from 'react'
 import './BannerHome.css'
 
-const BannerHome = () => {
+const BannerHome = ({ setLoadHomeComponent }) => {
   const handleMouseOver = (event) => {
     const element = event.target
     element.style.backgroundColor = '#A8F0D0'
@@ -35,23 +35,28 @@ const BannerHome = () => {
     }
   }
 
+  const handleClick = e => {
+    e.preventDefault()
+    setLoadHomeComponent(e.target.name ? e.target.name: 'home')
+  }
+
   return(
     <div className='bannerHome'>
-      <div className="placeholder">
+      <div className="placeholder" name='home' onClick={handleClick}>
         <span>Logo</span>
       </div>
       <nav className='navlinks'>
         <ul>
-          <li><a onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href=''>About Us</a></li>
-          <li><a onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href=''>Sign Up/Log In</a></li>
-          <li><a onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href=''>Contact</a></li>
+          <li><a onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href='' name='about'>About Us</a></li>
+          <li><a onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href='' name='login'>Sign Up/Log In</a></li>
+          <li><a onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href='' name='contact'>Contact</a></li>
         </ul>
       </nav>
       <nav className='navicons'>
         <ul>
-          <li><a className='navicon' href=''><img src='info-light.png' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='About Us'></img></a></li>
-          <li><a className='navicon' href=''><img src='home-light.png' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='Log In'></img></a></li>
-          <li><a className='navicon' href=''><img src='mail-light.png' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='Contact'></img></a></li>
+          <li><a className='navicon' href=''><img src='info-light.png' onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='About Us' name='about'></img></a></li>
+          <li><a className='navicon' href=''><img src='home-light.png' onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='Sign Up/Log In' name='login'></img></a></li>
+          <li><a className='navicon' href=''><img src='mail-light.png' onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='Contact' name='contact'></img></a></li>
         </ul>
       </nav>
     </div>
