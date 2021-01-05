@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+.loginForm {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+.login {
+  margin: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  background-color: #1F526F;
+  color: #AAADC4;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+.signup {
+  margin: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  background-color: #1F526F;
+  color: #AAADC4;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+.formElement {
+  width: 75%;
+}
+input {
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif;
+  border: none;
+}
+.submit {
+  cursor: pointer;
+  background-color: #AAADC4;
+}
+.submit:hover {
+  background-color: #A8F0D0;
+}
+@media only screen and (max-width: 700px) {
+  .loginForm {
+    max-width: 300px;
+    width: 85vw;
+  }
+}

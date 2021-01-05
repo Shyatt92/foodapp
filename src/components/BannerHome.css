@@ -30,7 +30,8 @@
 }
 .navicons {
   display: none;
-  width: 500px;
+  width: 50%;
+  margin: 10px;
 }
 .navicons ul {
   margin: 10px;
@@ -40,7 +41,7 @@
   justify-content: space-evenly;
 }
 .navicon img {
-  width: 50px;
+  width: 40px;
   border-radius: 5px;
   padding: 5px;
 }
