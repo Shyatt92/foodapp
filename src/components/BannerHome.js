@@ -48,14 +48,14 @@ const BannerHome = ({ setLoadHomeComponent }) => {
       <nav className='navlinks'>
         <ul>
           <li><a onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href='' name='about'>About Us</a></li>
-          <li><a onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href='' name='login'>Sign Up/Log In</a></li>
+          <li><a onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href='' name='logIn'>Sign Up/Log In</a></li>
           <li><a onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='navlink' href='' name='contact'>Contact</a></li>
         </ul>
       </nav>
       <nav className='navicons'>
         <ul>
           <li><a className='navicon' href=''><img src='info-light.png' onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='About Us' name='about'></img></a></li>
-          <li><a className='navicon' href=''><img src='home-light.png' onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='Sign Up/Log In' name='login'></img></a></li>
+          <li><a className='navicon' href=''><img src='home-light.png' onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='Sign Up/Log In' name='logIn'></img></a></li>
           <li><a className='navicon' href=''><img src='mail-light.png' onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} alt='Contact' name='contact'></img></a></li>
         </ul>
       </nav>
