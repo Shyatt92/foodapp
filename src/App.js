@@ -3,6 +3,7 @@ import './App.css'
 import BannerHome from './components/BannerHome'
 import LoginForm from './components/LoginForm'
 import HomePage from './components/HomePage'
+import AboutUs from './components/AboutUs'
 
 function App() {
   const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
@@ -11,7 +12,7 @@ function App() {
     if (loadHomeComponent === 'logIn') {
       return (<LoginForm setLoadHomeComponent={setLoadHomeComponent} />)
     } else if (loadHomeComponent === 'about') {
-      return (<h1>About Us</h1>)
+      return (<AboutUs />)
     } else if (loadHomeComponent === 'contact') {
       return (<h1>Contact Us</h1>)
     } else  if (loadHomeComponent === 'home') {

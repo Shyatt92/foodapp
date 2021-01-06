@@ -8,7 +8,11 @@
   width: 50vw;
   height: 40vh;
   margin: 10px;
+  cursor: default;
 }
 .homepage .placeholder span {
   font-size: 2em;
+}
+.homepage h1 {
+  font-family: 'Raleway', sans-serif;
 }

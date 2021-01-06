@@ -1,0 +1,36 @@
+.aboutUs {
+  position: absolute;
+  background-color: #1F526F;
+  width: 80vw;
+  top: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.aboutUs h1 {
+  font-family: 'Raleway', sans-serif;
+  color: #AAADC4;
+  margin: 30px;
+}
+.aboutUs div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 30px;
+}
+.aboutUs p {
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15em;
+  color: #1F526F;
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  width: 80%;
+  margin: 30px, 0px;
+}
+.aboutUs div p {
+  width: 49%;
+}
