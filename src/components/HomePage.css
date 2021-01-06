@@ -1,0 +1,14 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.homepage .placeholder {
+  width: 50vw;
+  height: 40vh;
+  margin: 10px;
+}
+.homepage .placeholder span {
+  font-size: 2em;
+}

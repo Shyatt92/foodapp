@@ -9,3 +9,15 @@
   align-items: center;
   background-color: #e8e8e8;
 }
+.placeholder {
+  background: #ccc;
+  border: 1px solid red;
+  text-align: center;
+  position: relative;
+  font-weight: bold;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

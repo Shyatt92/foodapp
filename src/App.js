@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './App.css'
 import BannerHome from './components/BannerHome'
 import LoginForm from './components/LoginForm'
+import HomePage from './components/HomePage'
 
 function App() {
   const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
@@ -14,7 +15,7 @@ function App() {
     } else if (loadHomeComponent === 'contact') {
       return (<h1>Contact Us</h1>)
     } else  if (loadHomeComponent === 'home') {
-      return (<h1>Home</h1>)
+      return (<HomePage />)
     } else if (loadHomeComponent === 'login') {
       return (<h1>Logged In!</h1>)
     } else if (loadHomeComponent === 'signup') {
