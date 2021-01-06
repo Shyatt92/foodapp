@@ -6,6 +6,7 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 .login {
   margin: 1px;
@@ -16,6 +17,7 @@
   height: 300px;
   width: 300px;
   background-color: #1F526F;
+  border-radius: 5px;
   color: #AAADC4;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
@@ -30,6 +32,7 @@
   height: 300px;
   width: 300px;
   background-color: #1F526F;
+  border-radius: 5px;
   color: #AAADC4;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
@@ -38,17 +41,17 @@
 .formElement {
   width: 75%;
 }
-input {
+.loginForm input {
   border-radius: 5px;
   font-size: 1em;
   font-family: 'Raleway', sans-serif;
   border: none;
 }
-.submit {
+.loginForm .submit {
   cursor: pointer;
   background-color: #AAADC4;
 }
-.submit:hover {
+.loginForm .submit:hover {
   background-color: #A8F0D0;
 }
 @media only screen and (max-width: 700px) {

@@ -1,0 +1,62 @@
+.contactUs {
+  position: absolute;
+  background-color: #1F526F;
+  border-radius: 5px;
+  top: 20%;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #AAADC4
+}
+.contactUs h1 {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 300px;
+  width: 80%;
+  background-color: #1F526F;
+  color: #AAADC4;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+.contactForm textarea {
+  outline: none;
+  resize: none;
+  width: 100%;
+  height: 150px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+}
+.contactForm .contactFormRow2 {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+.contactForm input {
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif;
+  border: none;
+  margin-bottom: 10px;
+}
+.contactForm .email {
+  width: 100%;
+}
+.contactForm .submit {
+  width: 100px;
+  cursor: pointer;
+  background-color: #AAADC4;
+}
+.contactForm .submit:hover {
+  background-color: #A8F0D0;
+}
