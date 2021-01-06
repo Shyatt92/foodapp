@@ -17,7 +17,7 @@ const ContactUs = () => {
             <label htmlFor='contactEmail'>Email</label><br/>
             <input type='email' name='email' id='contactEmail' className='email'></input>
           </div>
-          <input type='submit' className='submit'></input>
+          <input type='submit' value='Send' className='submit'></input>
         </div>
       </form>
     </div>

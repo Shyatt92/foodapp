@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 .loginForm {
+  position: absolute;
+  top: 20%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -38,7 +40,7 @@
   font-weight: bold;
   font-size: 1.25em;
 }
-.formElement {
+.loginForm .formElement {
   width: 75%;
 }
 .loginForm input {

@@ -1,0 +1,54 @@
+.signUp {
+  position: absolute;
+  top: 20%;
+  background-color: #1F526F;
+  border-radius: 5px;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.signUp h1 {
+  font-family: 'Raleway', sans-serif;
+  color: #AAADC4;
+}
+.signUp .signUpForm {
+  width: 80%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  color: #AAADC4;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+.signUpForm .nameFields {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.signUpForm .nameField {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+.signUpForm input {
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif;
+  border: none;
+}
+.signUpForm .submit {
+  cursor: pointer;
+  background-color: #AAADC4;
+  width: 50%;
+  align-self: flex-end;
+}
+.signUpForm .submit:hover {
+  background-color: #A8F0D0;
+}
