@@ -1,9 +1,14 @@
 import React from 'react'
 import './SignUp.css'
 
-const SignUp = ({ userEmail }) => {
+const SignUp = ({ setLoadHomeComponent, userEmail, setUserFName }) => {
+  const handleChange = e => {
+    setUserFName(e.target.value)
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
+    setLoadHomeComponent('verification')
   }
 
   return (
@@ -13,7 +18,7 @@ const SignUp = ({ userEmail }) => {
         <div className='nameFields'>
           <div className='nameField'>
             <label htmlFor='fname'>First Name</label>
-            <input type='text' name='fname' className='fname' id='fname'></input>
+            <input type='text' name='fname' className='fname' id='fname' onChange={handleChange}></input>
           </div>
           <div className='nameField'>
             <label htmlFor='sname'>Surname</label>

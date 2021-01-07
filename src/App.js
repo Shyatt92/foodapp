@@ -6,10 +6,12 @@ import HomePage from './components/HomePage'
 import AboutUs from './components/AboutUs'
 import ContactUs from './components/ContactUs'
 import SignUp from './components/SignUp'
+import Verification from './components/Verification'
 
 function App() {
   const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
   const [ userEmail, setUserEmail ] = useState('')
+  const [ userFName, setUserFName ] = useState('')
 
   const componentToLoad = () => {
     if (loadHomeComponent === 'logIn') {
@@ -23,7 +25,9 @@ function App() {
     } else if (loadHomeComponent === 'login') {
       return (<h1>Logged In!</h1>)
     } else if (loadHomeComponent === 'signup') {
-      return (<SignUp userEmail={userEmail} />)
+      return (<SignUp setLoadHomeComponent={setLoadHomeComponent} userEmail={userEmail} setUserFName={setUserFName} />)
+    } else if (loadHomeComponent === 'verification') {
+      return (<Verification userEmail={userEmail} userFName={userFName} />)
     }
   }
 
