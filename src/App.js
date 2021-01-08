@@ -11,8 +11,19 @@ import Banner from './components/main/Banner'
 
 function App() {
   const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
+  const [ loadAppComponent, setLoadAppComponent ] = useState('recipes')
   const [ userEmail, setUserEmail ] = useState('')
   const [ userFName, setUserFName ] = useState('')
+
+  const appComponentToLoad = () => {
+    if (loadAppComponent) {
+      return (
+        <div className='loaded'>
+          <Banner setLoadAppComponent={setLoadAppComponent}/>
+        </div>
+      )
+    }
+  }
 
   const componentToLoad = () => {
     if (loadHomeComponent === 'logIn') {
@@ -44,12 +55,7 @@ function App() {
         </div>
       )
     } else if (loadHomeComponent === 'login') {
-      return (
-        <div className='loaded'>
-          <Banner />
-          <h1>Logged In!</h1>
-        </div>
-      )
+      return appComponentToLoad()
     } else if (loadHomeComponent === 'signup') {
       return (
         <div className='loaded'>

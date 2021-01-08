@@ -24,7 +24,6 @@ const BannerHome = ({ setLoadHomeComponent }) => {
     element.style.color = '#AAADC4'
 
     if (element.src) {
-      console.log(element.src)
       if (element.src.includes('info-dark.png')) {
         element.src = 'info-light.png'
       } else if (element.src.includes('home-dark.png')) {
