@@ -6,7 +6,6 @@ import Nav from 'react-bootstrap/Nav'
 const BannerHome = ({ setLoadHomeComponent }) => {
 
   const handleClick = e => {
-    console.log(e.target.name)
     setLoadHomeComponent(e.target.name)
   }
 
