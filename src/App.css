@@ -1,27 +1,4 @@
 
-.App {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  margin: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
+.app {
   background-color: #e8e8e8;
-}
-.placeholder {
-  background: #ccc;
-  border: 1px solid red;
-  text-align: center;
-  position: relative;
-  font-weight: bold;
-  margin: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.App .loaded {
-  display: flex;
-  justify-content: center;
 }

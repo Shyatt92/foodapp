@@ -1,5 +1,4 @@
 import React from 'react'
-import './Verification.css'
 
 const Verification = ({ userEmail, userFName }) => {
   return (

@@ -1,82 +1,59 @@
 import React, { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
+
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 import BannerHome from './components/home/BannerHome'
-import LoginForm from './components/home/LoginForm'
 import HomePage from './components/home/HomePage'
 import AboutUs from './components/home/AboutUs'
+import LoginForm from './components/home/LoginForm'
 import ContactUs from './components/home/ContactUs'
-import SignUp from './components/home/SignUp'
-import Verification from './components/home/Verification'
-import Banner from './components/main/Banner'
 
 function App() {
   const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
-  const [ loadAppComponent, setLoadAppComponent ] = useState('recipes')
-  const [ userEmail, setUserEmail ] = useState('')
-  const [ userFName, setUserFName ] = useState('')
-
-  const appComponentToLoad = () => {
-    if (loadAppComponent) {
-      return (
-        <div className='loaded'>
-          <Banner setLoadAppComponent={setLoadAppComponent}/>
-        </div>
-      )
-    }
-  }
+  // const [ loadAppComponent, setLoadAppComponent ] = useState('recipes')
+  // const [ userEmail, setUserEmail ] = useState('')
+  // const [ userFName, setUserFName ] = useState('')
 
   const componentToLoad = () => {
-    if (loadHomeComponent === 'logIn') {
+    if (loadHomeComponent === 'home') {
       return (
-        <div className='loaded'>
-          <BannerHome setLoadHomeComponent={setLoadHomeComponent} />
-          <LoginForm setLoadHomeComponent={setLoadHomeComponent} setUserEmail={setUserEmail} />
-        </div>
+        <HomePage />
       )
-    } else if (loadHomeComponent === 'about') {
+    } else if (loadHomeComponent === 'aboutUs') {
       return (
-        <div className='loaded'>
-          <BannerHome setLoadHomeComponent={setLoadHomeComponent} />
-          <AboutUs />
-        </div>
+        <AboutUs />
       )
-    } else if (loadHomeComponent === 'contact') {
+    } else if (loadHomeComponent === 'logIn') {
       return (
-        <div className='loaded'>
-          <BannerHome setLoadHomeComponent={setLoadHomeComponent} />
-          <ContactUs />
-        </div>
+        <LoginForm />
       )
-    } else  if (loadHomeComponent === 'home') {
+    } else if (loadHomeComponent === 'contactUs') {
       return (
-        <div className='loaded'>
-          <BannerHome setLoadHomeComponent={setLoadHomeComponent} />
-          <HomePage />
-        </div>
-      )
-    } else if (loadHomeComponent === 'login') {
-      return appComponentToLoad()
-    } else if (loadHomeComponent === 'signup') {
-      return (
-        <div className='loaded'>
-          <BannerHome setLoadHomeComponent={setLoadHomeComponent} />
-          <SignUp setLoadHomeComponent={setLoadHomeComponent} userEmail={userEmail} setUserFName={setUserFName} />
-        </div>
-      )
-    } else if (loadHomeComponent === 'verification') {
-      return (
-        <div className='loaded'>
-          <BannerHome setLoadHomeComponent={setLoadHomeComponent} />
-          <Verification userEmail={userEmail} userFName={userFName} />
-        </div>
+        <ContactUs />
       )
     }
   }
 
   return (
-    <div className="App">
-      {componentToLoad()}
-    </div>
+    <Container className="bg-light vh-100" fluid>
+      <Row>
+        <Col className="p-0">
+          <BannerHome setLoadHomeComponent={setLoadHomeComponent} />
+        </Col>
+      </Row>
+      <Row className="d-flex h-100 pt-5">
+        {componentToLoad()}
+      </Row>
+      {/* <Row className="fixed-bottom bg-secondary">
+        <Col>
+          <p className="text-white">Footer</p>
+        </Col>
+      </Row> */}
+    </Container>
   )
 }
 
