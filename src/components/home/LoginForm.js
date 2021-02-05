@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
-const LoginForm = () => {
+const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, userPassword, signUpEmail }) => {
   return (
     <Col className="d-flex align-items-center">
       <Container className="bg-dark h-50">
@@ -19,12 +19,12 @@ const LoginForm = () => {
                 <Form className="w-75 mx-auto my-5">
                   <Form.Group controlId="tabLoginEmail">
                     <Form.Label className="text-white">Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" value={userEmail} onChange={setUserEmail} />
                   </Form.Group>
 
                   <Form.Group controlId="tabLoginPassword">
                     <Form.Label className="text-white">Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder="Password" value={userPassword} onChange={setUserPassword} />
                   </Form.Group>
                   <Button variant="primary" type="submit">
                     Log In
@@ -35,7 +35,7 @@ const LoginForm = () => {
                 <Form className="w-75 mx-auto my-5">
                   <Form.Group controlId="tabSignUpEmail">
                     <Form.Label className="text-white">Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" value={signUpEmail} onChange={setSignUpEmail} />
                   </Form.Group>
                   <Button variant="primary" type="submit">
                     Sign Up
@@ -48,12 +48,12 @@ const LoginForm = () => {
             <Form className="w-75 my-auto mx-auto">
               <Form.Group controlId="formLoginEmail">
                 <Form.Label className="text-white">Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" placeholder="Enter email" value={userEmail} onChange={setUserEmail} />
               </Form.Group>
 
               <Form.Group controlId="formLoginPassword">
                 <Form.Label className="text-white">Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" placeholder="Password" value={userPassword} onChange={setUserPassword} />
               </Form.Group>
               <Button variant="primary" type="submit">
                 Log In
@@ -64,7 +64,7 @@ const LoginForm = () => {
             <Form className="w-75 my-auto mx-auto">
               <Form.Group controlId="formSignUpEmail">
                 <Form.Label className="text-white">Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" placeholder="Enter email" value={signUpEmail} onChange={setSignUpEmail} />
               </Form.Group>
               <Button variant="primary" type="submit">
                 Sign Up

@@ -12,11 +12,11 @@ import AboutUs from './components/home/AboutUs'
 import LoginForm from './components/home/LoginForm'
 import ContactUs from './components/home/ContactUs'
 
+//import loginService from './services/login'
+
 function App() {
   const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
-  // const [ loadAppComponent, setLoadAppComponent ] = useState('recipes')
-  // const [ userEmail, setUserEmail ] = useState('')
-  // const [ userFName, setUserFName ] = useState('')
+  const [ userInfo, setUserInfo ] = useState({})
 
   const componentToLoad = () => {
     if (loadHomeComponent === 'home') {
@@ -29,7 +29,14 @@ function App() {
       )
     } else if (loadHomeComponent === 'logIn') {
       return (
-        <LoginForm />
+        <LoginForm
+          setUserEmail={({ target }) => setUserInfo({ ...userInfo, email: target.value })}
+          setUserPassword={({ target }) => setUserInfo({ ...userInfo, password: target.value })}
+          setSignUpEmail={({ target }) => setUserInfo({ ...userInfo, signUpEmail: target.value })}
+          userEmail={userInfo.email}
+          userPassword={userInfo.password}
+          userSignUpEmail={userInfo.signUpEmail}
+        />
       )
     } else if (loadHomeComponent === 'contactUs') {
       return (
@@ -48,11 +55,6 @@ function App() {
       <Row className="d-flex h-100 pt-5">
         {componentToLoad()}
       </Row>
-      {/* <Row className="fixed-bottom bg-secondary">
-        <Col>
-          <p className="text-white">Footer</p>
-        </Col>
-      </Row> */}
     </Container>
   )
 }
