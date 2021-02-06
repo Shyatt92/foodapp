@@ -8,7 +8,12 @@ import Button from 'react-bootstrap/Button'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
-const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, userPassword, signUpEmail }) => {
+const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, userPassword, signUpEmail, setLoadHomeComponent }) => {
+  const handleSignUpClick = e => {
+    e.preventDefault()
+    setLoadHomeComponent(e.target.name)
+  }
+
   return (
     <Col className="d-flex align-items-center">
       <Container className="bg-dark h-50">
@@ -19,12 +24,12 @@ const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, u
                 <Form className="w-75 mx-auto my-5">
                   <Form.Group controlId="tabLoginEmail">
                     <Form.Label className="text-white">Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" value={userEmail} onChange={setUserEmail} />
+                    <Form.Control type="email" placeholder="Enter email" value={userEmail} onChange={setUserEmail} required />
                   </Form.Group>
 
                   <Form.Group controlId="tabLoginPassword">
                     <Form.Label className="text-white">Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" value={userPassword} onChange={setUserPassword} />
+                    <Form.Control type="password" placeholder="Password" value={userPassword} onChange={setUserPassword} required />
                   </Form.Group>
                   <Button variant="primary" type="submit">
                     Log In
@@ -32,10 +37,10 @@ const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, u
                 </Form>
               </Tab>
               <Tab eventKey="signUp" title="Sign Up">
-                <Form className="w-75 mx-auto my-5">
+                <Form className="w-75 mx-auto my-5" name='signUp' onSubmit={handleSignUpClick}>
                   <Form.Group controlId="tabSignUpEmail">
                     <Form.Label className="text-white">Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" value={signUpEmail} onChange={setSignUpEmail} />
+                    <Form.Control type="email" placeholder="Enter email" value={signUpEmail} onChange={setSignUpEmail} required />
                   </Form.Group>
                   <Button variant="primary" type="submit">
                     Sign Up
@@ -48,12 +53,12 @@ const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, u
             <Form className="w-75 my-auto mx-auto">
               <Form.Group controlId="formLoginEmail">
                 <Form.Label className="text-white">Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" value={userEmail} onChange={setUserEmail} />
+                <Form.Control type="email" placeholder="Enter email" value={userEmail} onChange={setUserEmail} required />
               </Form.Group>
 
               <Form.Group controlId="formLoginPassword">
                 <Form.Label className="text-white">Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" value={userPassword} onChange={setUserPassword} />
+                <Form.Control type="password" placeholder="Password" value={userPassword} onChange={setUserPassword} required />
               </Form.Group>
               <Button variant="primary" type="submit">
                 Log In
@@ -61,10 +66,10 @@ const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, u
             </Form>
           </Col>
           <Col className="col-6 d-none d-md-flex border border-white">
-            <Form className="w-75 my-auto mx-auto">
+            <Form className="w-75 my-auto mx-auto" name='signUp' onSubmit={handleSignUpClick}>
               <Form.Group controlId="formSignUpEmail">
                 <Form.Label className="text-white">Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" value={signUpEmail} onChange={setSignUpEmail} />
+                <Form.Control type="email" placeholder="Enter email" value={signUpEmail} onChange={setSignUpEmail} required />
               </Form.Group>
               <Button variant="primary" type="submit">
                 Sign Up

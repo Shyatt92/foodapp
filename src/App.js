@@ -10,13 +10,21 @@ import BannerHome from './components/home/BannerHome'
 import HomePage from './components/home/HomePage'
 import AboutUs from './components/home/AboutUs'
 import LoginForm from './components/home/LoginForm'
+import SignUpForm from './components/home/SignUpForm'
 import ContactUs from './components/home/ContactUs'
 
 //import loginService from './services/login'
 
 function App() {
   const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
-  const [ userInfo, setUserInfo ] = useState({})
+  const [ userInfo, setUserInfo ] = useState({
+    email: '',
+    password: '',
+    signUpEmail: '',
+    fName: '',
+    surname: '',
+    username: ''
+  })
 
   const componentToLoad = () => {
     if (loadHomeComponent === 'home') {
@@ -36,11 +44,27 @@ function App() {
           userEmail={userInfo.email}
           userPassword={userInfo.password}
           userSignUpEmail={userInfo.signUpEmail}
+          setLoadHomeComponent={setLoadHomeComponent}
         />
       )
     } else if (loadHomeComponent === 'contactUs') {
       return (
         <ContactUs />
+      )
+    } else if(loadHomeComponent === 'signUp') {
+      return (
+        <SignUpForm
+          signUpEmail={userInfo.signUpEmail}
+          fName={userInfo.fName}
+          surname={userInfo.surname}
+          username={userInfo.username}
+          password={userInfo.password}
+          setSignUpEmail={({ target }) => setUserInfo({ ...userInfo, signUpEmail: target.value })}
+          setFName={({ target }) => setUserInfo({ ...userInfo, fName: target.value })}
+          setSurname={({ target }) => setUserInfo({ ...userInfo, surname: target.value })}
+          setUsername={({ target }) => setUserInfo({ ...userInfo, username: target.value })}
+          setPassword={({ target }) => setUserInfo({ ...userInfo, password: target.value })}
+        />
       )
     }
   }
