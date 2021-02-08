@@ -29,11 +29,18 @@ function App() {
 
   const handleSignUp = async event => {
     event.preventDefault()
+    await signupService.signUp(userInfo)
 
-    console.log(userInfo)
-    const user = await signupService.signUp(userInfo)
+    setUserInfo({
+      email: '',
+      password: '',
+      signUpEmail: '',
+      firstName: '',
+      surname: '',
+      username: ''
+    })
 
-    alert(user)
+    setLoadHomeComponent('signUpConfirmation')
   }
 
   const componentToLoad = () => {
