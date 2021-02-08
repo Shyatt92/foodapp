@@ -14,6 +14,7 @@ import SignUpForm from './components/home/SignUpForm'
 import ContactUs from './components/home/ContactUs'
 
 //import loginService from './services/login'
+import signupService from './services/signup'
 
 function App() {
   const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
@@ -21,10 +22,19 @@ function App() {
     email: '',
     password: '',
     signUpEmail: '',
-    fName: '',
+    firstName: '',
     surname: '',
     username: ''
   })
+
+  const handleSignUp = async event => {
+    event.preventDefault()
+
+    console.log(userInfo)
+    const user = await signupService.signUp(userInfo)
+
+    alert(user)
+  }
 
   const componentToLoad = () => {
     if (loadHomeComponent === 'home') {
@@ -54,16 +64,13 @@ function App() {
     } else if(loadHomeComponent === 'signUp') {
       return (
         <SignUpForm
-          signUpEmail={userInfo.signUpEmail}
-          fName={userInfo.fName}
-          surname={userInfo.surname}
-          username={userInfo.username}
-          password={userInfo.password}
+          userInfo={userInfo}
           setSignUpEmail={({ target }) => setUserInfo({ ...userInfo, signUpEmail: target.value })}
-          setFName={({ target }) => setUserInfo({ ...userInfo, fName: target.value })}
+          setFirstName={({ target }) => setUserInfo({ ...userInfo, firstName: target.value })}
           setSurname={({ target }) => setUserInfo({ ...userInfo, surname: target.value })}
           setUsername={({ target }) => setUserInfo({ ...userInfo, username: target.value })}
           setPassword={({ target }) => setUserInfo({ ...userInfo, password: target.value })}
+          handleSignUp={handleSignUp}
         />
       )
     }

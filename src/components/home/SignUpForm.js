@@ -7,17 +7,16 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignUpForm = ({
-  signUpEmail, fName, surname, username, password, setSignUpEmail, setFName, setSurname, setUsername, setPassword
+  userInfo, setSignUpEmail, setFirstName, setSurname, setUsername, setPassword, handleSignUp
 }) => {
   let confirmPassword
 
   const setConfirmPassword = e => {
-    console.log(e.target.value)
     confirmPassword = e.target.value
   }
 
   const verifyPassword = () => {
-    if (password !== confirmPassword) {
+    if (userInfo.password !== confirmPassword) {
       document.getElementById('verifyMessage').style.color = 'red'
       document.getElementById('verifyMessage').innerHTML = 'Passwords do not match'
     } else {
@@ -30,18 +29,18 @@ const SignUpForm = ({
       <Container className='bg-dark'>
         <Row>
           <Col>
-            <Form className="mx-auto my-5 w-75">
+            <Form className="mx-auto my-5 w-75" onSubmit={handleSignUp}>
               <Form.Row>
                 <Col>
                   <Form.Group controlId='signUpFName'>
                     <Form.Label className='text-white'>First Name</Form.Label>
-                    <Form.Control type='text' placeholder='Enter First Name' value={fName} onChange={setFName} required/>
+                    <Form.Control type='text' placeholder='Enter First Name' value={userInfo.firstName} onChange={setFirstName} required/>
                   </Form.Group>
                 </Col>
                 <Col>
                   <Form.Group controlId='signUpSurname'>
                     <Form.Label className='text-white'>Surname</Form.Label>
-                    <Form.Control type='text' placeholder='Enter Surname' value={surname} onChange={setSurname} required/>
+                    <Form.Control type='text' placeholder='Enter Surname' value={userInfo.surname} onChange={setSurname} required/>
                   </Form.Group>
                 </Col>
               </Form.Row>
@@ -49,13 +48,13 @@ const SignUpForm = ({
                 <Col>
                   <Form.Group controlId="tabSignUpEmail">
                     <Form.Label className="text-white">Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" value={signUpEmail} onChange={setSignUpEmail} required/>
+                    <Form.Control type="email" placeholder="Enter email" value={userInfo.signUpEmail} onChange={setSignUpEmail} required/>
                   </Form.Group>
                 </Col>
                 <Col>
                   <Form.Group controlId='signUpUsername'>
                     <Form.Label className='text-white'>Username</Form.Label>
-                    <Form.Control type='text' placeholder='Choose Username' value={username} onChange={setUsername} required/>
+                    <Form.Control type='text' placeholder='Choose Username' value={userInfo.username} onChange={setUsername} required/>
                   </Form.Group>
                 </Col>
               </Form.Row>
@@ -63,7 +62,7 @@ const SignUpForm = ({
                 <Col>
                   <Form.Group controlId='signUpPassword'>
                     <Form.Label className='text-white'>Password</Form.Label>
-                    <Form.Control type='password' placeholder='Create Password' value={password} onChange={setPassword} required/>
+                    <Form.Control type='password' placeholder='Create Password' value={userInfo.password} onChange={setPassword} required/>
                   </Form.Group>
                 </Col>
                 <Col>
