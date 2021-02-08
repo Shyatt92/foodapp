@@ -12,8 +12,9 @@ import AboutUs from './components/home/AboutUs'
 import LoginForm from './components/home/LoginForm'
 import SignUpForm from './components/home/SignUpForm'
 import ContactUs from './components/home/ContactUs'
+import SignUpConfirmation from './components/home/SignUpConfirmation'
 
-//import loginService from './services/login'
+import loginService from './services/login'
 import signupService from './services/signup'
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
     event.preventDefault()
     await signupService.signUp(userInfo)
 
+    setLoadHomeComponent('signUpConfirmation')
+
     setUserInfo({
       email: '',
       password: '',
@@ -39,8 +42,18 @@ function App() {
       surname: '',
       username: ''
     })
+  }
 
-    setLoadHomeComponent('signUpConfirmation')
+  const handleLogin = async event => {
+    event.preventDefault()
+
+    const user = await loginService.login(userInfo)
+
+    window.localStorage.setItem(
+      'loggedUser', JSON.stringify(user)
+    )
+
+    setUserInfo({ ...userInfo, email: user.email, username: user.username, firstName: user.firstName, surname: user.surname })
   }
 
   const componentToLoad = () => {
@@ -62,6 +75,7 @@ function App() {
           userPassword={userInfo.password}
           userSignUpEmail={userInfo.signUpEmail}
           setLoadHomeComponent={setLoadHomeComponent}
+          handleLogin={handleLogin}
         />
       )
     } else if (loadHomeComponent === 'contactUs') {
@@ -79,6 +93,10 @@ function App() {
           setPassword={({ target }) => setUserInfo({ ...userInfo, password: target.value })}
           handleSignUp={handleSignUp}
         />
+      )
+    } else if(loadHomeComponent === 'signUpConfirmation') {
+      return (
+        <SignUpConfirmation setLoadHomeComponent={setLoadHomeComponent} />
       )
     }
   }

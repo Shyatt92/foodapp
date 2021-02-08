@@ -7,4 +7,9 @@ const signUp = async credentials => {
   return response.data
 }
 
-export default { signUp }
+const signUpDelete = async () => {
+  await axios.delete(baseUrl)
+  return
+}
+
+export default { signUp, signUpDelete }

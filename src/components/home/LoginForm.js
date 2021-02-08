@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
-const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, userPassword, signUpEmail, setLoadHomeComponent }) => {
+const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, userPassword, signUpEmail, setLoadHomeComponent, handleLogin }) => {
   const handleSignUpClick = e => {
     e.preventDefault()
     setLoadHomeComponent(e.target.name)
@@ -50,7 +50,7 @@ const LoginForm = ({ setUserEmail, setUserPassword, setSignUpEmail, userEmail, u
             </Tabs>
           </Col>
           <Col className="col-6 d-none d-md-flex border border-white">
-            <Form className="w-75 my-auto mx-auto">
+            <Form className="w-75 my-auto mx-auto" onSubmit={handleLogin}>
               <Form.Group controlId="formLoginEmail">
                 <Form.Label className="text-white">Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" value={userEmail} onChange={setUserEmail} required />
