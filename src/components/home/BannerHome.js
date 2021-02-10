@@ -3,10 +3,10 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
-const BannerHome = ({ setLoadHomeComponent }) => {
+const BannerHome = ({ setLoadComponent }) => {
 
   const handleClick = e => {
-    setLoadHomeComponent(e.target.name)
+    setLoadComponent(e.target.name)
   }
 
   return (

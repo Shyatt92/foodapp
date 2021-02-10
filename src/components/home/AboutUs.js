@@ -13,33 +13,35 @@ const sectionText = {
 
 const AboutUs = () => {
   return (
-    <Col className="d-flex align-items-center">
-      <Container className="h-auto bg-dark">
-        <Row className="my-2">
-          <Col>
-            <h1 className="text-white text-center">FoodApp</h1>
-          </Col>
-        </Row>
-        <Row className="justify-content-around h-auto my-4">
-          <Col className="col-12 d-md-none">
-            <Tabs defaultActiveKey="description" id="uncontrolled-tab-example">
-              <Tab eventKey="description" title="Description">
-                <p className="bg-white">{sectionText.description}</p>
-              </Tab>
-              <Tab eventKey="services" title="Services Offered">
-                <p className="bg-white">{sectionText.services}</p>
-              </Tab>
-            </Tabs>
-          </Col>
-          <Col className="bg-light col-4 d-none d-md-block">
-            <p>{sectionText.description}</p>
-          </Col>
-          <Col className="bg-light col-6 d-none d-md-block">
-            <p>{sectionText.services}</p>
-          </Col>
-        </Row>
-      </Container>
-    </Col>
+    <Row className='d-flex h-100 pt-5'>
+      <Col className="d-flex align-items-center">
+        <Container className="h-auto bg-dark">
+          <Row className="my-2">
+            <Col>
+              <h1 className="text-white text-center">FoodApp</h1>
+            </Col>
+          </Row>
+          <Row className="justify-content-around h-auto my-4">
+            <Col className="col-12 d-md-none">
+              <Tabs defaultActiveKey="description" id="uncontrolled-tab-example">
+                <Tab eventKey="description" title="Description">
+                  <p className="bg-white">{sectionText.description}</p>
+                </Tab>
+                <Tab eventKey="services" title="Services Offered">
+                  <p className="bg-white">{sectionText.services}</p>
+                </Tab>
+              </Tabs>
+            </Col>
+            <Col className="bg-light col-4 d-none d-md-block">
+              <p>{sectionText.description}</p>
+            </Col>
+            <Col className="bg-light col-6 d-none d-md-block">
+              <p>{sectionText.services}</p>
+            </Col>
+          </Row>
+        </Container>
+      </Col>
+    </Row>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 
@@ -14,25 +14,38 @@ import SignUpForm from './components/home/SignUpForm'
 import ContactUs from './components/home/ContactUs'
 import SignUpConfirmation from './components/home/SignUpConfirmation'
 
+import BannerMain from './components/main/BannerMain'
+import Recipes from './components/main/Recipes'
+
 import loginService from './services/login'
 import signupService from './services/signup'
 
 function App() {
-  const [ loadHomeComponent, setLoadHomeComponent ] = useState('home')
+  const [ loadComponent, setLoadComponent ] = useState('home')
   const [ userInfo, setUserInfo ] = useState({
     email: '',
     password: '',
     signUpEmail: '',
     firstName: '',
     surname: '',
-    username: ''
+    username: '',
+    token: null
   })
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUserInfo({ ...userInfo, token: user.token, username: user.username, firstName: user.firstName, surname: user.surname, email: user.email })
+      setLoadComponent('recipes')
+    }
+  }, [])
 
   const handleSignUp = async event => {
     event.preventDefault()
     await signupService.signUp(userInfo)
 
-    setLoadHomeComponent('signUpConfirmation')
+    setLoadComponent('signUpConfirmation')
 
     setUserInfo({
       email: '',
@@ -40,7 +53,8 @@ function App() {
       signUpEmail: '',
       firstName: '',
       surname: '',
-      username: ''
+      username: '',
+      token: null
     })
   }
 
@@ -53,19 +67,20 @@ function App() {
       'loggedUser', JSON.stringify(user)
     )
 
-    setUserInfo({ ...userInfo, email: user.email, username: user.username, firstName: user.firstName, surname: user.surname })
+    setUserInfo({ ...userInfo, email: user.email, username: user.username, firstName: user.firstName, surname: user.surname, token: user.token })
+    setLoadComponent('recipes')
   }
 
   const componentToLoad = () => {
-    if (loadHomeComponent === 'home') {
+    if (loadComponent === 'home') {
       return (
         <HomePage />
       )
-    } else if (loadHomeComponent === 'aboutUs') {
+    } else if (loadComponent === 'aboutUs') {
       return (
         <AboutUs />
       )
-    } else if (loadHomeComponent === 'logIn') {
+    } else if (loadComponent === 'logIn') {
       return (
         <LoginForm
           setUserEmail={({ target }) => setUserInfo({ ...userInfo, email: target.value })}
@@ -74,15 +89,15 @@ function App() {
           userEmail={userInfo.email}
           userPassword={userInfo.password}
           userSignUpEmail={userInfo.signUpEmail}
-          setLoadHomeComponent={setLoadHomeComponent}
+          setLoadComponent={setLoadComponent}
           handleLogin={handleLogin}
         />
       )
-    } else if (loadHomeComponent === 'contactUs') {
+    } else if (loadComponent === 'contactUs') {
       return (
         <ContactUs />
       )
-    } else if(loadHomeComponent === 'signUp') {
+    } else if(loadComponent === 'signUp') {
       return (
         <SignUpForm
           userInfo={userInfo}
@@ -94,9 +109,17 @@ function App() {
           handleSignUp={handleSignUp}
         />
       )
-    } else if(loadHomeComponent === 'signUpConfirmation') {
+    } else if(loadComponent === 'signUpConfirmation') {
       return (
-        <SignUpConfirmation setLoadHomeComponent={setLoadHomeComponent} />
+        <SignUpConfirmation setLoadHomeComponent={setLoadComponent} />
+      )
+    }
+  }
+
+  const mainComponentToLoad = () => {
+    if (loadComponent === 'recipes') {
+      return (
+        <Recipes />
       )
     }
   }
@@ -105,12 +128,16 @@ function App() {
     <Container className="bg-light vh-100" fluid>
       <Row>
         <Col className="p-0">
-          <BannerHome setLoadHomeComponent={setLoadHomeComponent} />
+          {userInfo.token === null
+            ? <BannerHome setLoadComponent={setLoadComponent} />
+            : <BannerMain setLoadComponent={setLoadComponent} setUserInfo={setUserInfo} />
+          }
         </Col>
       </Row>
-      <Row className="d-flex h-100 pt-5">
-        {componentToLoad()}
-      </Row>
+      {userInfo.token === null
+        ? componentToLoad()
+        : mainComponentToLoad()
+      }
     </Container>
   )
 }

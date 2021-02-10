@@ -12,20 +12,22 @@ const SignUpConfirmation = ({ setLoadHomeComponent }) => {
   }
 
   return (
-    <Col className='d-flex align-items-center'>
-      <Container className='h-auto bg-dark'>
-        <Row>
-          <Col>
-            <h1 className='text-white text-center'>Sign Up Confirmation</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p className='text-white text-center'>You have now been signed up to FoodApp! <br/> Please <a className='font-italic text-decoration-underline' onClick={handleClick}>return to the Log In page</a> to log into the app.</p>
-          </Col>
-        </Row>
-      </Container>
-    </Col>
+    <Row className='d-flex h-100 pt-5'>
+      <Col className='d-flex align-items-center'>
+        <Container className='h-auto bg-dark'>
+          <Row>
+            <Col>
+              <h1 className='text-white text-center'>Sign Up Confirmation</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p className='text-white text-center'>You have now been signed up to FoodApp! <br/> Please <a className='font-italic text-decoration-underline' onClick={handleClick}>return to the Log In page</a> to log into the app.</p>
+            </Col>
+          </Row>
+        </Container>
+      </Col>
+    </Row>
   )
 }
 
