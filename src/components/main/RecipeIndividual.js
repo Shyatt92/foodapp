@@ -23,7 +23,7 @@ const RecipeIndividual = () => {
     },
     servings: 4,
     difficulty: 'Easy',
-    method: 'Insert recipe method here',
+    method: '',
     ingredients: {},
     notes: '',
     nutrition: {}
@@ -39,14 +39,23 @@ const RecipeIndividual = () => {
           <Col className='col-10'>
             <Card>
               <Card.Body>
-                <Card.Title as='h1'>{recipe.recipeName}</Card.Title>
+                <Card.Title as='h1'>{recipe.recipeName}{recipe.rating ? (<span className='small'> - {recipe.rating}/5</span>): null}</Card.Title>
                 <Card.Subtitle>{recipe.description}</Card.Subtitle>
                 <p className='small'>Source: {recipe.source}<br/>
                 Source Url: <a href={recipe.sourceUrl} target='_blank' rel='noreferrer'>{recipe.sourceUrl}</a></p>
                 <div>
                   <Row>
                     <Col>
-
+                      <Card body>Prep Time: {recipe.prepTime}mins</Card>
+                    </Col>
+                    <Col>
+                      <Card body>Cook Time: {recipe.cookTime}mins</Card>
+                    </Col>
+                    <Col>
+                      <Card body>Servings: {recipe.servings}</Card>
+                    </Col>
+                    <Col>
+                      <Card body>Difficulty: {recipe.difficulty}</Card>
                     </Col>
                   </Row>
                 </div>
@@ -59,9 +68,7 @@ const RecipeIndividual = () => {
             <Card>
               <Card.Body>
                 <Card.Title>Method</Card.Title>
-                <Card.Text>
-                  {recipe.method}
-                </Card.Text>
+                {recipe.method}
               </Card.Body>
             </Card>
           </Col>
