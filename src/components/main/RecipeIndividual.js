@@ -33,7 +33,7 @@ const RecipeIndividual = () => {
     tags: [],
     time: {
       prep: '15 mins',
-      cook: '5 mins10 mins',
+      cook: '10 mins',
       active: '',
       inactive: '',
       ready: '',
@@ -43,24 +43,28 @@ const RecipeIndividual = () => {
     image: 'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chicken-satay-salad-8f5b068.jpg'
   }
 
+  const styles = {
+    overflowY: 'auto'
+  }
+
   return(
-    <Row className='pt-5 px-4'>
+    <Row className='pt-5 px-4 h-100' style={styles}>
       <Col>
         <Row className='my-3'>
-          <Col className='col-2'>
-            <Image src={recipe.image} thumbnail/>
+          <Col className='col-3'>
+            <Image src={recipe.image} fluid/>
           </Col>
-          <Col className='col-10'>
+          <Col className='col-9'>
             <Card>
               <Card.Body>
                 <Card.Title as='h1'>{recipe.name}</Card.Title>
                 <div>
                   <Row>
                     <Col>
-                      <Card body>Prep Time: {recipe.time.prep}</Card>
+                      <Card body>Prep Time:<br/> {recipe.time.prep}</Card>
                     </Col>
                     <Col>
-                      <Card body>Cook Time: {recipe.time.cook}</Card>
+                      <Card body>Cook Time:<br/> {recipe.time.cook}</Card>
                     </Col>
                     <Col>
                       <Card body>Servings: {recipe.servings}</Card>
