@@ -3,6 +3,7 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
+import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 
 const RecipeIndividual = () => {
@@ -58,19 +59,11 @@ const RecipeIndividual = () => {
             <Card>
               <Card.Body>
                 <Card.Title as='h1'>{recipe.name}</Card.Title>
-                <div>
-                  <Row>
-                    <Col>
-                      <Card body>Prep Time:<br/> {recipe.time.prep}</Card>
-                    </Col>
-                    <Col>
-                      <Card body>Cook Time:<br/> {recipe.time.cook}</Card>
-                    </Col>
-                    <Col>
-                      <Card body>Servings: {recipe.servings}</Card>
-                    </Col>
-                  </Row>
-                </div>
+                <CardDeck>
+                  <Card body>Prep Time:<br/> {recipe.time.prep}</Card>
+                  <Card body>Cook Time:<br/> {recipe.time.cook}</Card>
+                  <Card body>Servings: {recipe.servings}</Card>
+                </CardDeck>
               </Card.Body>
             </Card>
           </Col>
