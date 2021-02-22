@@ -3,10 +3,11 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
-const BannerHome = ({ setLoadComponent, setUserInfo }) => {
+const BannerHome = ({ setLoadComponent, setUserInfo, setIndividualRecipe }) => {
 
   const handleClick = e => {
     setLoadComponent(e.target.name)
+    setIndividualRecipe(null)
   }
 
   const handleLogOut = e => {

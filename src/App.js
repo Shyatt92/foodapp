@@ -19,8 +19,9 @@ import Recipes from './components/main/Recipes'
 
 import loginService from './services/login'
 import signupService from './services/signup'
+import recipeService from './services/recipe'
 
-function App() {
+const App = () => {
   const [ loadComponent, setLoadComponent ] = useState('home')
   const [ userInfo, setUserInfo ] = useState({
     email: '',
@@ -29,14 +30,18 @@ function App() {
     firstName: '',
     surname: '',
     username: '',
-    token: null
+    token: null,
+    recipes: []
   })
+  const [ individualRecipe, setIndividualRecipe ] = useState(null)
 
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedUser')
+  useEffect(async () => {
+    const loggedUserJSON = await window.localStorage.getItem('loggedUser')
     if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUserInfo({ ...userInfo, token: user.token, username: user.username, firstName: user.firstName, surname: user.surname, email: user.email })
+      const user = await JSON.parse(loggedUserJSON)
+      const recipes = await recipeService.get({ user })
+      setUserInfo({ ...userInfo, email: user.email, username: user.usename, firstName: user.firstName, surname: user.surname, token: user.token, recipes: recipes })
+      recipeService.setToken(user.token)
       setLoadComponent('recipes')
     }
   }, [])
@@ -54,7 +59,8 @@ function App() {
       firstName: '',
       surname: '',
       username: '',
-      token: null
+      token: null,
+      recipes: []
     })
   }
 
@@ -67,7 +73,8 @@ function App() {
       'loggedUser', JSON.stringify(user)
     )
 
-    setUserInfo({ ...userInfo, email: user.email, username: user.username, firstName: user.firstName, surname: user.surname, token: user.token })
+    recipeService.setToken(user.token)
+    setUserInfo({ ...userInfo, email: user.email, username: user.username, firstName: user.firstName, surname: user.surname, token: user.token, recipes: user.recipes })
     setLoadComponent('recipes')
   }
 
@@ -119,7 +126,7 @@ function App() {
   const mainComponentToLoad = () => {
     if (loadComponent === 'recipes') {
       return (
-        <Recipes />
+        <Recipes userInfo={userInfo} setUserInfo={setUserInfo} individualRecipe={individualRecipe} setIndividualRecipe={setIndividualRecipe} />
       )
     }
   }
@@ -130,7 +137,7 @@ function App() {
         <Col className="p-0">
           {userInfo.token === null
             ? <BannerHome setLoadComponent={setLoadComponent} />
-            : <BannerMain setLoadComponent={setLoadComponent} setUserInfo={setUserInfo} />
+            : <BannerMain setLoadComponent={setLoadComponent} setUserInfo={setUserInfo} setIndividualRecipe={setIndividualRecipe} />
           }
         </Col>
       </Row>
