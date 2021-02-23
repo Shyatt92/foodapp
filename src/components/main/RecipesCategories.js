@@ -18,9 +18,9 @@ const RecipesCategories = ({ setRecipeUrl, showAddRecipe, setShowAddRecipe, show
   }
 
   const handleRecipeChange = e => {
-    const property = e.target.name
+    let property = e.target.name
 
-    if(!(property==='ingredients' || property==='instructions')) {
+    if(!(property.includes('ingredient') || property==='instructions')) {
       const newRecipe = { ...recipe }
       if(property.includes('time')) {
         newRecipe.time[property.slice(5)] = e.target.value
@@ -28,6 +28,15 @@ const RecipesCategories = ({ setRecipeUrl, showAddRecipe, setShowAddRecipe, show
         newRecipe[property] = e.target.value
       }
       setRecipe(newRecipe)
+    } else if(property.includes('ingredient')){
+      const newRecipe = { ...recipe }
+
+      let indexProperty = e.target.name.split('-')
+      let [ index, property ] = indexProperty[1].split('.')
+
+      newRecipe.ingredients[index][property] = e.target.value
+      setRecipe(newRecipe)
+
     } else {
       const newProperty = e.target.value.split('\n')
       const newRecipe = { ...recipe }
@@ -78,31 +87,50 @@ const RecipesCategories = ({ setRecipeUrl, showAddRecipe, setShowAddRecipe, show
                   <Form.Label>Recipe Name</Form.Label>
                   <Form.Control type='text' name='name' value={recipe.name} onChange={handleRecipeChange}/>
                 </Form.Group>
-                <Form.Row>
-                  <Col className='col-8'>
-                    <Form.Group controlId='confirmRecipeForm.ingredients'>
-                      <Form.Label>Ingredients</Form.Label>
-                      <Form.Control as='textarea' name='ingredients' rows={recipe.ingredients? recipe.ingredients.length + 1: 10} defaultValue={recipe.ingredients? recipe.ingredients.join('\n'): null} onChange={handleRecipeChange} />
-                    </Form.Group>
-                  </Col>
-                  <Col className='col-4'>
-                    <Form.Group controlId='confirmRecipeForm.prepTime'>
-                      <Form.Label>Prep Time</Form.Label>
-                      <Form.Control type='text' name='time.prep' value={recipe.time? recipe.time.prep: null} onChange={handleRecipeChange} />
-                    </Form.Group>
-                    <Form.Group controlId='confirmRecipeForm.cookTime'>
-                      <Form.Label>Cook Time</Form.Label>
-                      <Form.Control type='text' name='time.cook' value={recipe.time? recipe.time.cook: null} onChange={handleRecipeChange} />
-                    </Form.Group>
-                    <Form.Group controlId='confirmRecipeForm.servings'>
-                      <Form.Label>Servings</Form.Label>
-                      <Form.Control type='text' name='servings' value={recipe.servings? recipe.servings: null} onChange={handleRecipeChange} />
-                    </Form.Group>
-                  </Col>
-                </Form.Row>
+                <Form.Group controlId='confirmRecipeForm.ingredients'>
+                  <Form.Label>Ingredients</Form.Label>
+                  {/* <Form.Control as='textarea' name='ingredients' rows={recipe.ingredients? recipe.ingredients.length + 1: 10} defaultValue={recipe.ingredients? recipe.ingredients.join('\n'): ''} onChange={handleRecipeChange} /> */}
+                  {recipe.ingredients?
+                    recipe.ingredients.map((ingredient, ingredientIndex) => {
+                      return(
+                        <div  key={`ingredient-${ingredientIndex}`} className='mb-4'>
+                          <Form.Row>
+                            <Col className='col-2'>
+                              <Form.Control type='text' name={`ingredient-${ingredientIndex}.quantity`} defaultValue={ingredient.quantity} onChange={handleRecipeChange} />
+                            </Col>
+                            <Col className='col-2'>
+                              <Form.Control type='text' name={`ingredient-${ingredientIndex}.unit`} defaultValue={ingredient.unit} onChange={handleRecipeChange} />
+                            </Col>
+                            <Col className='col-8'>
+                              <Form.Control type='text' name={`ingredient-${ingredientIndex}.ingredient`} defaultValue={ingredient.ingredient} onChange={handleRecipeChange} />
+                            </Col>
+                          </Form.Row>
+                          <Form.Row>
+                            <Col className='col-8 ml-auto'>
+                              <Form.Control type='text' name={`ingredient-${ingredientIndex}.notes`} placeholder='Notes' onChange={handleRecipeChange} />
+                            </Col>
+                          </Form.Row>
+                        </div>
+                      )
+                    }):
+                    <Form.Control as='textarea' />
+                  }
+                </Form.Group>
+                <Form.Group controlId='confirmRecipeForm.prepTime'>
+                  <Form.Label>Prep Time</Form.Label>
+                  <Form.Control type='text' name='time.prep' value={recipe.time? recipe.time.prep: ''} onChange={handleRecipeChange} />
+                </Form.Group>
+                <Form.Group controlId='confirmRecipeForm.cookTime'>
+                  <Form.Label>Cook Time</Form.Label>
+                  <Form.Control type='text' name='time.cook' value={recipe.time? recipe.time.cook: ''} onChange={handleRecipeChange} />
+                </Form.Group>
+                <Form.Group controlId='confirmRecipeForm.servings'>
+                  <Form.Label>Servings</Form.Label>
+                  <Form.Control type='text' name='servings' value={recipe.servings? recipe.servings: ''} onChange={handleRecipeChange} />
+                </Form.Group>
                 <Form.Group controlId='confirmRecipeForm.instructions'>
                   <Form.Label>Method</Form.Label>
-                  <Form.Control as='textarea' rows={15} name='instructions' defaultValue={recipe.instructions? recipe.instructions.join('\n\n'): null} onChange={handleRecipeChange} />
+                  <Form.Control as='textarea' rows={15} name='instructions' defaultValue={recipe.instructions? recipe.instructions.join('\n\n'): ''} onChange={handleRecipeChange} />
                 </Form.Group>
               </Form>
             </Modal.Body>

@@ -18,11 +18,21 @@ const RecipeIngredients = ({ recipe }) => {
     <Container className='pt-5 h-100' style={styles}>
       {recipe.ingredients? recipe.ingredients.map((ingredient, ingredientIndex) => {
         return (
-          <Row key={`ingredient-${ingredientIndex}`}>
-            <Col>
-              <p className='text-white' onClick={handleRecipeClick}>{ingredient}</p>
-            </Col>
-          </Row>
+          <div key={`ingredient-${ingredientIndex}`}>
+            <Row>
+              <Col>
+                <p className='text-white' onClick={handleRecipeClick}>{`${ingredient.quantity ? ingredient.quantity: ''} ${ingredient.unit? ingredient.unit: ''} ${ingredient.ingredient? ingredient.ingredient: ''}`}</p>
+              </Col>
+            </Row>
+            {ingredient.notes?
+              <Row className='ml-auto'>
+                <Col className='ml-auto'>
+                  <p className='text-white'><em>{`Note: ${ingredient.notes}`}</em></p>
+                </Col>
+              </Row>:
+              null
+            }
+          </div>
         )
       }): null}
     </Container>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = '/signup'
+const baseUrl = '/users'
 
 const signUp = async credentials => {
   const response = await axios.post(baseUrl, credentials)
